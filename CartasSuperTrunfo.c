@@ -7,8 +7,7 @@
 
 Mudanca do tipo de variável Densidade Populacional para unsigned long int para comodar números maiores.
 Acrescimo de calculo do Super Poder, somando todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
-Acrescimo de comparação entre as cartas, atributo por atributo.
-Acrecismo de exibição do resultado da comparação entre as cartas para cada atributo.
+Acrescismo de exibição do resultado da comparação entre as cartas para cada atributo.
 */
 
 
@@ -146,7 +145,7 @@ int main() {
     printf("| Area (km2): %.2f Km2\n", area_km2_1); // Exibição da área da cidade em km2 da carta 01
     printf("| PIB: %.2f bilhoes de reais\n", pib_1); // Exibição do PIB da cidade da carta 01
     printf("| Numero de pontos turisticos: %d \n", num_pontos_turisticos_1); // Exibição da quantidade de pontos turísticos da carta 01
-    printf("| Densidade populacional: %.2f hab/km2 \n", densidade_populacional_1); // Exibição da densidade populacional da carta 01
+    printf("| Densidade populacional: %lu hab/km2 \n", densidade_populacional_1); // Exibição da densidade populacional da carta 01
     printf("| PIB per Capita: %.2f reais\n", pib_per_capita_1); // Exibição do PIB per capita da carta 01
     printf("| Super Poder: %.2f \n", super_poder_1); // Exibição do Super Poder da carta 01, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
     printf("##-----------------------------------------## \n"); // Banner rodapé da carta 01
@@ -172,7 +171,7 @@ int main() {
     printf("| Area (km2): %.2f Km2\n", area_km2_2); // Exibição da área da cidade em km2 da carta 02
     printf("| PIB: %.2f bilhoes de reais\n", pib_2); // Exibição do PIB da cidade da carta 02
     printf("| Numero de pontos turisticos: %d \n", num_pontos_turisticos_2); // Exibição da quantidade de pontos turísticos da carta 02
-    printf("| Densidade populacional: %.2f hab/km2 \n", densidade_populacional_2); // Exibição da densidade populacional da carta 02
+    printf("| Densidade populacional: %lu hab/km2 \n", densidade_populacional_2); // Exibição da densidade populacional da carta 02
     printf("| PIB per Capita: %.2f reais\n", pib_per_capita_2); // Exibição do PIB per capita da carta 02
     printf("| Super Poder: %.2f \n", super_poder_2); // Exibição do Super Poder da carta 02, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
     printf("##-----------------------------------------##\n"); // Banner rodapé da carta 02
