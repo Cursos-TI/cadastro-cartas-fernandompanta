@@ -1,46 +1,53 @@
 #include <stdio.h> // Inclusão da biblioteca padrão de entrada e saída
 
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
+// Desafio Super Trunfo em C
 
+/*Observação para o Nível Mestre em relação ao Nível Aventureiro:
 
-/*Observação para o Nível Aventureiro em relação ao Nível Novato:
-
-Acrescimo de calculos da Densidade Populacional e PIB per Capita
-Correção da unidade de medida de Área na exibição das duas Cartas
-Correção da unidade de medida do PIB na exibição das duas Cartas
-
+Mudanca do tipo de variável Densidade Populacional para unsigned long int para comodar números maiores.
+Acrescimo de calculo do Super Poder, somando todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
+Acrescimo de comparação entre as cartas, atributo por atributo.
+Acrecismo de exibição do resultado da comparação entre as cartas para cada atributo.
 */
 
 
 
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
- 
+
     //Definição das varáveis da carta 01
     char estado_1[3], nome_cidade_1[50]; // Variáveis da sigla de estado e nome da cidade da carta 01 do tipo Caracter.
     int cod_carta_1 = 01; // Variável do Código da Carta 01 do tipo Inteiro.
     int num_habitantes_1, num_pontos_turisticos_1; // Variáveis do número de habitantes e quantidade de pontos turísticos da carta 01 do tipo Inteiro.
     float area_km2_1, pib_1; // Variáveis da área da cidade em km² e PIB da carta 01 do tipo Float.
-    float densidade_populacional_1; // Variável da densidade populacional da carta 01 do tipo Float.
+    unsigned long int densidade_populacional_1; // Variável da densidade populacional da carta 01 do tipo Float.
     float pib_per_capita_1; // Variável do PIB per capita da carta 01 do tipo Float.
-
+    float super_poder_1; // Variável do Super Poder da carta 01 do tipo Float.
 
     //Definição das varáveis da carta 02
     char estado_2[3], nome_cidade_2[50]; // Variáveis da sigla de estado e nome da cidade da carta 02 do tipo Caracter
     int cod_carta_2 = 02; // Variável do Código da Carta 02 do tipo Inteiro.
     int num_habitantes_2, num_pontos_turisticos_2; // Variáveis do número de habitantes e quantidade de pontos turísticos da carta 02 do tipo Inteiro.
     float area_km2_2, pib_2; // Variáveis da área da cidade em km2 e PIB da carta 02 do tipo Float.
-    float densidade_populacional_2; // Variável da densidade populacional da carta 02 do tipo Float.
+    unsigned long int densidade_populacional_2; // Variável da densidade populacional da carta 02 do tipo Float.
     float pib_per_capita_2; // Variável do PIB per capita da carta 02 do tipo Float.
+    float super_poder_2; // Variável do Super Poder da carta 02 do tipo Float.
+    
+    // Variáveis para comparação entre as cartas
+
+    int resultado_num_habitantes = num_habitantes_1 > num_habitantes_2; // Variável para comparação do número de habitantes entre as cartas 01 e 02 do tipo Inteiro.
+    int resultado_area_km2 = area_km2_1 > area_km2_2; // Variável para comparação da área da cidade em km² entre as cartas 01 e 02 do tipo Inteiro.
+    int resultado_pib = pib_1 > pib_2; // Variável para comparação do PIB entre as cartas 01 e 02 do tipo Inteiro.
+    int resultado_num_pontos_turisticos = num_pontos_turisticos_1 > num_pontos_turisticos_2; // Variável para comparação da quantidade de pontos turísticos entre as cartas 01 e 02 do tipo Inteiro.
+    float resultado_densidade_populacional = densidade_populacional_1 < densidade_populacional_2; // Variável para comparação da densidade populacional entre as cartas 01 e 02 do tipo Float.
+    int resultado_pib_per_capita = pib_per_capita_1 > pib_per_capita_2; // Variável para comparação do PIB per capita entre as cartas 01 e 02 do tipo Inteiro.
 
   // Área para entrada de dados
 
      
  //----------------------------- Área de código de cadastro da carta 1 -----------------------------//   
-    printf("Bem vindo ao desafio Nivel Novato Super Trunfo"); // Mensagem de boas-vindas
+    printf("Bem vindo ao desafio Super Trunfo"); // Mensagem de boas-vindas
         printf("\n"); //Espaçamento para melhor visualização
         printf("\n"); //Espaçamento para melhor visualização
  
@@ -109,6 +116,15 @@ int main() {
         densidade_populacional_2 = (float)(num_habitantes_2) / area_km2_2; // Cálculo da densidade populacional da carta 02 a partir do número de habitantes dividido pela área da cidade em km².
         pib_per_capita_2 = (float)(pib_2 * 1000000000) / num_habitantes_2; // Cálculo do PIB per capita da carta 02 a partir do PIB da cidade multiplicado por 1 bilhão dividido pelo número de habitantes da cidade.
 
+        
+//--------------------- Área de caulculo para comparação entre as cartas
+
+    super_poder_1 = pib_per_capita_1 + num_pontos_turisticos_1 + pib_1 + area_km2_1 + num_habitantes_1 + (1.0 / densidade_populacional_1); // Cálculo do Super Poder da carta 01, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
+    super_poder_2 = pib_per_capita_2 + num_pontos_turisticos_2 + pib_2 + area_km2_2 + num_habitantes_2 + (1.0 / densidade_populacional_2); // Cálculo do Super Poder da carta 02, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
+
+
+
+
 
   // Área para exibição dos dados da cidade
 
@@ -132,7 +148,7 @@ int main() {
     printf("| Numero de pontos turisticos: %d \n", num_pontos_turisticos_1); // Exibição da quantidade de pontos turísticos da carta 01
     printf("| Densidade populacional: %.2f hab/km2 \n", densidade_populacional_1); // Exibição da densidade populacional da carta 01
     printf("| PIB per Capita: %.2f reais\n", pib_per_capita_1); // Exibição do PIB per capita da carta 01
-
+    printf("| Super Poder: %.2f \n", super_poder_1); // Exibição do Super Poder da carta 01, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
     printf("##-----------------------------------------## \n"); // Banner rodapé da carta 01
         
         printf("\n"); //Espaçamento para melhor visualização
@@ -158,11 +174,25 @@ int main() {
     printf("| Numero de pontos turisticos: %d \n", num_pontos_turisticos_2); // Exibição da quantidade de pontos turísticos da carta 02
     printf("| Densidade populacional: %.2f hab/km2 \n", densidade_populacional_2); // Exibição da densidade populacional da carta 02
     printf("| PIB per Capita: %.2f reais\n", pib_per_capita_2); // Exibição do PIB per capita da carta 02
+    printf("| Super Poder: %.2f \n", super_poder_2); // Exibição do Super Poder da carta 02, calculado a partir da soma de todos os atributos numéricos (população, área, PIB, número de pontos turísticos, PIB per capita e o inverso da densidade populacional – quanto menor a densidade, maior o "poder")
     printf("##-----------------------------------------##\n"); // Banner rodapé da carta 02
         
         printf("\n"); //Espaçamento para melhor visualização
         printf("\n"); //Espaçamento para melhor visualização
 
+    // Exibição da comparação entre as cartas
+    printf("##-----------------------------------------## \n"); // Banner para exibição da comparação entre as cartas
+    printf("##           COMPARACAO ENTRE CARTAS       ## \n"); // Banner para exibição da comparação entre as cartas
+    printf("##-----------------------------------------## \n"); // Banner para exibição da comparação entre as cartas
+    printf("%s \n", num_habitantes_1 > num_habitantes_2 ? "|Populacao: Carta 01 venceu(1)" : "|Populacao: Carta 02 venceu(0)"); // Exibição do resultado da comparação do número de habitantes entre as cartas 01 e 02
+    printf("%s \n", area_km2_1 > area_km2_2 ? "|Area: Carta 01 venceu(1)" : "|Area: Carta 02 venceu(0)"); // Exibição do resultado da comparação da área da cidade em km² entre as cartas 01 e 02
+    printf("%s \n", pib_1 > pib_2 ? "|PIB: Carta 01 venceu(1)" : "|PIB: Carta 02 venceu(0)"); // Exibição do resultado da comparação do PIB entre as cartas 01 e 02
+    printf("%s \n", num_pontos_turisticos_1 > num_pontos_turisticos_2 ? "|Num. pontos turisticos: Carta 01 venceu(1)" : "|Num. pontos turisticos: Carta 02 venceu(0)"); // Exibição do resultado da comparação da quantidade de pontos turísticos entre as cartas 01 e 02
+    printf("%s \n", densidade_populacional_1 < densidade_populacional_2 ? "|Densidade populacional: Carta 01 venceu(1)" : "|Densidade populacional: Carta 02 venceu(0)"); // Exibição do resultado da comparação da densidade populacional entre as cartas 01 e 02
+    printf("%s \n", pib_per_capita_1 > pib_per_capita_2 ? "|PIB per capita: Carta 01 venceu(1)" : "|PIB per capita: Carta 02 venceu(0)"); // Exibição do resultado da comparação do PIB per capita entre as cartas 01 e 02
+    printf("%s \n", super_poder_1 > super_poder_2 ? "|Super Poder: Carta 01 venceu(1)" : "|Super Poder: Carta 02 venceu(0)"); // Exibição do resultado da comparação do Super Poder entre as cartas 01 e 02
+    printf("##-----------------------------------------## \n"); // Banner para exibição da comparação entre as cartas  
 
 return 0;
+
 } 
